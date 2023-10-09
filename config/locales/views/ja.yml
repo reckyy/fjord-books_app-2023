@@ -9,6 +9,10 @@ ja:
       top: '本一覧'
       new: '投稿'
       show: '詳細'
+    edit:
+      title: '編集'
+      show: '詳細'
+      back: '戻る'
     show:
       edit: '編集'
       back: '戻る'
