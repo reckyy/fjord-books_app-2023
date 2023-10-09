@@ -2,3 +2,4 @@ ja:
   books:
     index:
       top: '本一覧'
+      new_book: '投稿'
