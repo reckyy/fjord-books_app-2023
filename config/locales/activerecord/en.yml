@@ -1,0 +1,8 @@
+en:
+  activerecord:
+    attributes:
+      book:
+        title: 'title'
+        memo: 'memo'
+        author: 'author'
+        picture: 'picture'

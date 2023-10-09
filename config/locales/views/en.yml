@@ -1,0 +1,24 @@
+en:
+  books:
+    book:
+      title: 'title'
+      memo: 'memo'
+      author: 'author'
+      picture: 'picture'
+    index:
+      top: 'Books'
+      new: 'new book'
+      show: 'show book info'
+    edit:
+      title: 'Editing book'
+      show: 'show book info'
+      back: 'back'
+    form:
+      submit: 'submit'
+    new:
+      new: 'new book'
+      back: 'back'
+    show:
+      edit: 'edit'
+      back: 'back'
+      delete: 'delete'
