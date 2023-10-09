@@ -7,8 +7,8 @@ ja:
       picture: '写真'
     index:
       top: '本一覧'
-      new_book: '投稿'
-      show_book: '詳細'
+      new: '投稿'
+      show: '詳細'
     show:
       edit: '編集'
       back: '戻る'
