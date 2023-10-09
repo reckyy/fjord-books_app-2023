@@ -3,3 +3,8 @@ ja:
     index:
       top: '本一覧'
       new_book: '投稿'
+    book:
+      title: 'タイトル'
+      memo: 'メモ'
+      author: '著者'
+      picture: '写真'
