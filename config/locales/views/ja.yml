@@ -3,6 +3,7 @@ ja:
     index:
       top: '本一覧'
       new_book: '投稿'
+      show_book: '詳細'
     book:
       title: 'タイトル'
       memo: 'メモ'
