@@ -13,6 +13,9 @@ ja:
       title: '編集'
       show: '詳細'
       back: '戻る'
+    new:
+      new: '投稿フォーム'
+      back: '戻る'
     show:
       edit: '編集'
       back: '戻る'
