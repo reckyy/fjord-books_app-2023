@@ -12,13 +12,13 @@ ja:
     edit:
       title: '編集'
       show: '詳細'
-      back: '戻る'
+      back: '一覧'
     form:
       submit: '投稿'
     new:
       new: '投稿フォーム'
-      back: '戻る'
+      back: '一覧'
     show:
       edit: '編集'
-      back: '戻る'
+      back: '一覧'
       delete: '削除'
