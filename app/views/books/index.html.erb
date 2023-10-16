@@ -1,18 +1,24 @@
-<h1><%= t('views.common.title_index', name: i18n_pluralize(Book.model_name.human)) %></h1>
+<% if user_signed_in? %>
+  <h1><%= t('views.common.title_index', name: i18n_pluralize(Book.model_name.human)) %></h1>
 
-<div id="books" class="index-items">
-  <% @books.each do |book| %>
-    <div class="index-item">
-      <%= render book %>
-      <p>
-        <%= link_to t('views.common.show', name: Book.model_name.human.downcase), book %>
-      </p>
-    </div>
-  <% end %>
-</div>
+  <div id="books" class="index-items">
+    <% @books.each do |book| %>
+      <div class="index-item">
+        <%= render book %>
+        <p>
+          <%= link_to t('views.common.show', name: Book.model_name.human.downcase), book %>
+        </p>
+      </div>
+    <% end %>
+  </div>
 
-<%= paginate @books %>
+  <%= paginate @books %>
 
-<nav class="page-nav">
-    <%= link_to t('views.common.new', name: Book.model_name.human.downcase), new_book_path %>
-</nav>
+  <nav class="page-nav">
+      <%= link_to t('views.common.new', name: Book.model_name.human.downcase), new_book_path %>
+  </nav>
+<% else %>
+  <h3><%= t('views.common.required_login') %></h3>
+  <%= link_to t('views.common.login'), new_user_session_path %>
+  <%= link_to t('views.common.sign_up'), new_user_registration_path %>
+<% end %>
