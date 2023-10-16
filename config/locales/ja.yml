@@ -197,6 +197,7 @@ ja:
       required_login: "登録後、ログインしてください。"
       login: "ログイン"
       sign_up: "新規登録"
+      logout: "ログアウト"
     pagination:
       first: '« 最初'
       last: '最後 »'
