@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[show]
+  before_action :set_user, only: %i[show edit update]
 
   def index
     @users = User.order(:id).page(params[:page])
@@ -7,13 +7,23 @@ class UsersController < ApplicationController
 
   def show; end
 
+  def edit; end
+
+  def update
+    if @user.update(user_params)
+      redirect_to user_url(@user), notice: t('controllers.common.notice_update', name: User.model_name.human)
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def set_user
     @user = User.find(params[:id])
   end
 
-  def book_params
+  def user_params
     params.require(:user).permit(:email, :post, :address, :self_introduction)
   end
 end
