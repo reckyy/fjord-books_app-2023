@@ -9,7 +9,9 @@ class UsersController < ApplicationController
 
   def show; end
 
-  def edit; end
+  def edit
+    redirect_to users_path unless current_user.id == @user.id
+  end
 
   def update
     if @user.update(user_params)
