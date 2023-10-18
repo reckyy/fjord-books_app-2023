@@ -26,10 +26,10 @@
   </p>
 
   <% if user.avatar.attached? %>
-	  <p>
-	    <strong><%= User.human_attribute_name(:avatar) %>:</strong>
-	    <%= image_tag user.avatar.variant(resize_to_limit: [150, 150]) %>
-	  </p>
+    <p>
+      <strong><%= User.human_attribute_name(:avatar) %>:</strong>
+      <%= image_tag user.avatar.variant(resize_to_limit: [150, 150]) %>
+    </p>
   <% end %>
 
 </div>
