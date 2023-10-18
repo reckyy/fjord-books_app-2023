@@ -3,3 +3,10 @@ ja:
     submit:
       create: 登録する
       update: 更新する
+  books:
+    create:
+      success:  本の作成に成功しました。
+    update:
+      success: 本の更新に成功しました。
+    destroy:
+      success: 本の削除に成功しました。
