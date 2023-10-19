@@ -3,12 +3,10 @@ ja:
     top: "%{item}一覧"
     new: "%{item}投稿"
     back: 戻る
+    show: 詳細
   books:
-    index:
-      show: '詳細'
     edit:
       title: '編集'
-      show: '詳細'
     form:
       submit: '投稿'
     new:
