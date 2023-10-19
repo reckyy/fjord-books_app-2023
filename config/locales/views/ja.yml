@@ -1,8 +1,9 @@
 ja:
+  default:
+    top: "%{model}一覧"
+    new: "%{model}投稿"
   books:
     index:
-      top: '本一覧'
-      new: '投稿'
       show: '詳細'
     edit:
       title: '編集'
