@@ -2,13 +2,13 @@ ja:
   default:
     top: "%{item}一覧"
     new: "%{item}投稿"
+    back: 戻る
   books:
     index:
       show: '詳細'
     edit:
       title: '編集'
       show: '詳細'
-      back: '一覧'
     form:
       submit: '投稿'
     new:
@@ -16,5 +16,4 @@ ja:
       back: '一覧'
     show:
       edit: '編集'
-      back: '一覧'
       delete: '削除'
