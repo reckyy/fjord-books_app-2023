@@ -8,6 +8,6 @@ ja:
     delete: 削除
   books:
     edit:
-      title: '編集'
+      title: '編集フォーム'
     new:
       new: '投稿フォーム'
