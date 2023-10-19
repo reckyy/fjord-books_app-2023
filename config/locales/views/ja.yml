@@ -1,7 +1,7 @@
 ja:
   default:
-    top: "%{model}一覧"
-    new: "%{model}投稿"
+    top: "%{item}一覧"
+    new: "%{item}投稿"
   books:
     index:
       show: '詳細'
