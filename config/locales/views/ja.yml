@@ -1,0 +1,13 @@
+ja:
+  default:
+    top: "%{item}一覧"
+    new: "%{item}投稿"
+    back: 戻る
+    show: 詳細
+    edit: 編集
+    delete: 削除
+  books:
+    edit:
+      title: '編集フォーム'
+    new:
+      new: '投稿フォーム'

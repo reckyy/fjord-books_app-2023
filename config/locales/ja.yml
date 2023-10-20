@@ -1,0 +1,10 @@
+ja:
+  helpers:
+    submit:
+      create: 登録する
+      update: 更新する
+  controllers:
+    default:
+      create: "%{item}の作成に成功しました。"
+      update: "%{item}の更新に成功しました。"
+      destroy: "%{item}の削除に成功しました。"
