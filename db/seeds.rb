@@ -33,4 +33,12 @@ Book.create!(
   picture: picture_file('erd.jpg')
 )
 
+20.times do |n|
+  Book.create!(
+    title: 'test',
+    memo: 'test',
+    author: 'test'
+  )
+end
+
 puts '初期データの投入が完了しました。' # rubocop:disable Rails/Output
