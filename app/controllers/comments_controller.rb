@@ -9,7 +9,15 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to @commentable, notice: t('controllers.common.notice_create', name: Comment.model_name.human)
     else
-      render :index, status: :unprocessable_entity
+      flash.now[:notice] = t('controllers.comment.save_fail')
+      case @commentable
+      when Book
+        @book = @commentable
+        render 'books/show', status: :unprocessable_entity
+      when Report
+        @report = @commentable
+        render 'reports/show', status: :unprocessable_entity
+      end
     end
   end
 
