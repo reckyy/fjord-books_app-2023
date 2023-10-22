@@ -5,6 +5,7 @@
       <p>
         <strong><%= comment.user.name %></strong>
         <%= comment.content %>
+        <%= link_to t('views.common.destroy', name: Comment.model_name.human.downcase), [commentable, comment], data: { turbo_method: :delete } %>
       </p>
   <% end %>
 <% end %>
