@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CommentsController < ApplicationController
   before_action :set_commentable, only: %i[create destroy]
 
@@ -13,10 +15,10 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = @commentable.comments.find(params[:id])
-    if @comment.user == current_user
-      @comment.destroy
-      redirect_to @commentable, notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
-    end
+    return unless @comment.user == current_user
+
+    @comment.destroy
+    redirect_to @commentable, notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
   end
 
   private
