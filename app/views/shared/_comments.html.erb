@@ -1,0 +1,15 @@
+<h2><%= t('views.common.title_index', name: Comment.model_name.human) %></h2>
+<% if commentable.persisted? %>
+  <% comments = commentable.comments %>
+  <% comments.each do |comment| %>
+      <p>
+        <strong><%= comment.user.name %></strong>
+        <%= comment.content %>
+      </p>
+  <% end %>
+<% end %>
+
+<%= form_with(model: [ commentable, commentable.comments.new ]) do |form| %>
+  <%= form.text_field :content %>
+  <%= form.submit t('views.shared.comment.new') %>
+<% end %>
