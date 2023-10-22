@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ReportsController < ApplicationController
+  before_action :set_report, only: %i[show]
   def index
     @reports = Report.includes(:user).order(:id).page(params[:page])
   end
@@ -8,6 +9,8 @@ class ReportsController < ApplicationController
   def new
     @report = current_user.reports.new
   end
+
+  def show; end
 
   def create
     @report = current_user.reports.new(report_params)
@@ -19,6 +22,10 @@ class ReportsController < ApplicationController
   end
 
   private
+
+  def set_report
+    @report = Report.find(params[:id])
+  end
 
   def report_params
     params.require(:report).permit(:title, :content)
