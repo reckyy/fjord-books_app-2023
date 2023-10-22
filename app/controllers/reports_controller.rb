@@ -2,6 +2,7 @@
 
 class ReportsController < ApplicationController
   before_action :set_report, only: %i[show edit]
+  before_action :set_my_report, only: %i[update destroy]
   def index
     @reports = Report.includes(:user).order(:id).page(params[:page])
   end
@@ -24,7 +25,6 @@ class ReportsController < ApplicationController
   end
 
   def update
-    @report = current_user.reports.find(params[:id])
     if @report.update(report_params)
       redirect_to report_url(@report), notice: t('controllers.common.notice_update', name: Report.model_name.human)
     else
@@ -32,11 +32,19 @@ class ReportsController < ApplicationController
     end
   end
 
+  def destroy
+    @report.destroy
+    redirect_to reports_url, notice: t('controllers.common.notice_destroy', name: Report.model_name.human)
+  end
 
   private
 
   def set_report
     @report = Report.find(params[:id])
+  end
+
+  def set_my_report
+    @report = current_user.reports.find(params[:id])
   end
 
   def report_params
