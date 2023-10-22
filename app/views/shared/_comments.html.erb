@@ -14,6 +14,6 @@
 <% end %>
 
 <%= form_with(model: [ commentable, commentable.comments.new ]) do |form| %>
-  <%= form.text_field :content %>
+  <%= form.text_field :content, required: true %>
   <%= form.submit t('views.shared.comment.new') %>
 <% end %>
