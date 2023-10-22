@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ReportsController < ApplicationController
-  before_action :set_report, only: %i[show edit update]
+  before_action :set_report, only: %i[show edit]
   def index
     @reports = Report.includes(:user).order(:id).page(params[:page])
   end
@@ -24,6 +24,7 @@ class ReportsController < ApplicationController
   end
 
   def update
+    @report = current_user.reports.find(params[:id])
     if @report.update(report_params)
       redirect_to report_url(@report), notice: t('controllers.common.notice_update', name: Report.model_name.human)
     else
