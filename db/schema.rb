@@ -29,6 +29,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_16_083528) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "post"
+    t.string "postal_code"
     t.text "address"
     t.text "self_introduction"
     t.index ["email"], name: "index_users_on_email", unique: true
