@@ -9,9 +9,9 @@ class User < ApplicationRecord
   private
 
   def avatar_type
-    unless avatar.blob.content_type.in?(%w[images/jpg images/png images/gif])
-      avatar.purge
-      errors.add(:avatar, I18n.t('errors.messages.used_unusable_image_type'))
-    end
+    return if avatar.blob.content_type.in?(%w[images/jpg images/png images/gif])
+
+    avatar.purge
+    errors.add(:avatar, I18n.t('errors.messages.used_unusable_image_type'))
   end
 end
