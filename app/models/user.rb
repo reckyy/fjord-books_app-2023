@@ -4,14 +4,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_one_attached :avatar
-  validate :avatar_type
+  validates :avatar_content_type, inclusion: { in: %w[image/png image/jpeg image/gif], message: I18n.t('errors.messages.used_unusable_image_type') }
 
   private
 
-  def avatar_type
-    return if avatar.blob.content_type.in?(%w[images/jpg images/png images/gif])
-
-    avatar.purge
-    errors.add(:avatar, I18n.t('errors.messages.used_unusable_image_type'))
+  def avatar_content_type
+    avatar.blob.content_type if avatar.attached?
   end
 end
