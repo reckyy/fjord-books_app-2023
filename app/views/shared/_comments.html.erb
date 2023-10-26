@@ -3,7 +3,13 @@
   <% comments.each do |comment| %>
     <% if comment.persisted? %>
       <p>
-        <strong><%= comment.user.name %></strong>
+        <strong>
+          <% if comment.user.name.present? %>
+            <%= comment.user.name %>
+          <% else %>
+            <%= comment.user.email %>
+          <% end %>
+        </strong>
         <%= comment.content %>
         <%= comment.created_at.strftime('%m/%d %H:%M') %>
         <% if current_user.id == comment.user_id %>
