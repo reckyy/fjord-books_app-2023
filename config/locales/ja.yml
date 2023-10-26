@@ -202,6 +202,10 @@ ja:
       previous: '‹ 前'
       next: '次 ›'
       truncate: '…'
+    reports:
+      mention:
+        to_mention: 言及先
+        from_mention: 言及元
   controllers:
     common:
       notice_create: "%{name}が作成されました。"
