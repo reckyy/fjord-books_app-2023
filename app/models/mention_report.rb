@@ -1,0 +1,2 @@
+class MentionReport < ApplicationRecord
+end
