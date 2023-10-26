@@ -3,6 +3,10 @@
 class Report < ApplicationRecord
   belongs_to :user
   has_many :comments, as: :commentable, dependent: :destroy
+  has_many :mention_reports, dependent: :destroy
+  has_many :metioning_reports, through: :mention_reports, source: :mentioned_report
+  has_many :swapping_id_mention_reports, class_name: 'Mentionreport', foreign_key: 'mentioned_report_id', dependent: :destroy, inverse_of: 'mentioned_report'
+  has_many :mentioned_reports, through: :swapping_id_mention_reports, source: :report
 
   validates :title, presence: true
   validates :content, presence: true
