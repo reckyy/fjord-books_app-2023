@@ -194,6 +194,10 @@ ja:
       title_edit: "%{name}の編集"
       error: エラー
       validation_error: "%{errors}があるため、この%{name}は保存できませんでした"
+      required_login: "登録後、ログインしてください。"
+      login: "ログイン"
+      sign_up: "新規登録"
+      logout: "ログアウト"
     pagination:
       first: '« 最初'
       last: '最後 »'
