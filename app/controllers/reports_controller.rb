@@ -3,6 +3,8 @@
 class ReportsController < ApplicationController
   before_action :set_report, only: %i[edit update destroy]
 
+  REPORT_URL = %r{http://localhost:3000/reports/(\d+)}
+
   def index
     @reports = Report.includes(:user).order(id: :desc).page(params[:page])
   end
@@ -22,6 +24,8 @@ class ReportsController < ApplicationController
     @report = current_user.reports.new(report_params)
 
     if @report.save
+      mentioned_ids = extract_report_ids(@report.content)
+      create_mention(@report.id, mentioned_ids) unless mentioned_ids.empty?
       redirect_to @report, notice: t('controllers.common.notice_create', name: Report.model_name.human)
     else
       render :new, status: :unprocessable_entity
@@ -30,6 +34,8 @@ class ReportsController < ApplicationController
 
   def update
     if @report.update(report_params)
+      mentioned_ids = extract_report_ids(@report.content)
+      create_mention(@report.id, mentioned_ids) unless mentioned_ids.empty?
       redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human)
     else
       render :edit, status: :unprocessable_entity
@@ -43,6 +49,16 @@ class ReportsController < ApplicationController
   end
 
   private
+
+  def extract_report_ids(text, report_url: REPORT_URL)
+    text.scan(report_url).flatten.uniq
+  end
+
+  def create_mention(report_id, mentioned_ids)
+    mentioned_ids.each do |id|
+      MentionReport.create(report_id:, mentioned_report_id: id)
+    end
+  end
 
   def set_report
     @report = current_user.reports.find(params[:id])
