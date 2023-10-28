@@ -34,6 +34,7 @@ class ReportsController < ApplicationController
 
   def update
     if @report.update(report_params)
+      @report.mention_reports.destroy_all
       mentioned_ids = extract_report_ids(@report.content)
       create_mention(@report.id, mentioned_ids) unless mentioned_ids.empty?
       redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human)

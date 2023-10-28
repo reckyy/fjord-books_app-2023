@@ -3,7 +3,9 @@
 <% unless report.mentioning_reports.empty? %>
   <%= t('views.reports.mention.to_mention') %>
   <% report.mentioning_reports.each do |mention| %>
-    <%= link_to mention.title, report_url(mention) %>
+    <p>
+      <%= link_to mention.title, report_url(mention) %>
+    </p>
   <% end %>
 <% else %>
   <p><%= t('views.reports.mention.no_mentioning') %></p>
@@ -12,7 +14,9 @@
 <% unless report.mentioned_reports.empty? %>
   <%= t('views.reports.mention.from_mention') %>
   <% report.mentioned_reports.each do |mention| %>
-    <%= link_to mention.title, report_url(mention) %>
+    <p>
+      <%= link_to mention.title, report_url(mention) %>
+    </p>
   <% end %>
 <% else %>
   <p><%= t('views.reports.mention.no_mentioned') %></p>
