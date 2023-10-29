@@ -18,4 +18,8 @@ class ReportTest < ActiveSupport::TestCase
   test '日報作成者以外なら編集できない' do
     assert_not @report.editable?(@user)
   end
+
+  test 'Dateクラスに変換できているか' do
+    assert_equal @report.created_on.class, Date
+  end
 end
