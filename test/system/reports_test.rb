@@ -16,6 +16,7 @@ class ReportsTest < ApplicationSystemTestCase
     fill_in 'user[email]', with: user.email
     fill_in 'user[password]', with: user.password
     click_on 'ログイン'
+    assert_text 'ログインしました。'
   end
 
   test 'ログイン後、日報を書く' do
@@ -34,6 +35,13 @@ class ReportsTest < ApplicationSystemTestCase
     click_on 'この日報を編集'
     fill_in 'report[content]', with: '変更したよ'
     click_on '更新する'
-    assert_text '日報が更新されました'
+    assert_text '日報が更新されました。'
+  end
+
+  test 'ログイン後、日報削除' do
+    login(@user_has_report)
+    visit report_url(@report)
+    click_on 'この日報を削除'
+    assert_text '日報が削除されました。'
   end
 end
