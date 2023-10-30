@@ -6,9 +6,8 @@ class ReportsTest < ApplicationSystemTestCase
   include Devise::Test::IntegrationHelpers
 
   setup do
-    @user = FactoryBot.create(:user)
     @report = FactoryBot.create(:report)
-    @user_has_report = @report.user
+    @user = @report.user
   end
 
   def login(user)
@@ -30,7 +29,7 @@ class ReportsTest < ApplicationSystemTestCase
   end
 
   test 'ログイン後、編集' do
-    login(@user_has_report)
+    login(@user)
     visit report_url(@report)
     click_on 'この日報を編集'
     fill_in 'report[content]', with: '変更したよ'
@@ -39,7 +38,7 @@ class ReportsTest < ApplicationSystemTestCase
   end
 
   test 'ログイン後、日報削除' do
-    login(@user_has_report)
+    login(@user)
     visit report_url(@report)
     click_on 'この日報を削除'
     assert_text '日報が削除されました。'
