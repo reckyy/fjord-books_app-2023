@@ -27,4 +27,14 @@ class ReportsTest < ApplicationSystemTestCase
     click_on '登録する'
     assert_text '日報が作成されました。'
   end
+
+  test 'ログイン後、編集' do
+    login(@user_has_report)
+    click_on '日報'
+    visit report_url(@report)
+    click_on 'この日報を編集'
+    fill_in 'report[content]', with: '変更したよ'
+    click_on '更新する'
+    assert_text '日報が更新されました'
+  end
 end
