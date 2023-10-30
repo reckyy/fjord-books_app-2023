@@ -30,7 +30,6 @@ class ReportsTest < ApplicationSystemTestCase
 
   test 'ログイン後、編集' do
     login(@user_has_report)
-    click_on '日報'
     visit report_url(@report)
     click_on 'この日報を編集'
     fill_in 'report[content]', with: '変更したよ'
