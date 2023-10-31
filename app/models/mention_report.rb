@@ -6,4 +6,5 @@ class MentionReport < ApplicationRecord
 
   validates :report_id, presence: true
   validates :mentioned_report_id, presence: true
+  validates :report_id, uniqueness: { scope: :mentioned_report_id }
 end
