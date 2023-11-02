@@ -11,7 +11,7 @@
           <% end %>
         </strong>
         <%= comment.content %>
-        <%= comment.created_at.strftime('%m/%d %H:%M') %>
+        <%= l comment.created_at, format: :short %>
         <% if current_user.id == comment.user_id %>
           <%= link_to t('views.common.destroy', name: Comment.model_name.human.downcase), [commentable, comment], data: { turbo_method: :delete } %>
         <% end %>
