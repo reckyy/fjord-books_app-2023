@@ -6,7 +6,7 @@ class UserTest < ActiveSupport::TestCase
   include Devise::Test::IntegrationHelpers
 
   setup do
-    @user = FactoryBot.create(:user)
+    @user = FactoryBot.create(:user, name: nil)
   end
 
   test '名前有のユーザーなら名前が返る' do
