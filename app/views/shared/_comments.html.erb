@@ -1,0 +1,25 @@
+<h2><%= t('views.common.title_index', name: Comment.model_name.human) %></h2>
+  <% comments = commentable.comments %>
+  <% comments.each do |comment| %>
+    <% if comment.persisted? %>
+      <p>
+        <strong>
+          <% if comment.user.name.present? %>
+            <%= comment.user.name %>
+          <% else %>
+            <%= comment.user.email %>
+          <% end %>
+        </strong>
+        <%= comment.content %>
+        <%= l comment.created_at, format: :short %>
+        <% if current_user.id == comment.user_id %>
+          <%= link_to t('views.common.destroy', name: Comment.model_name.human.downcase), [commentable, comment], data: { turbo_method: :delete } %>
+        <% end %>
+      </p>
+    <% end %>
+  <% end %>
+
+<%= form_with(model: [ commentable, commentable.comments.new ]) do |form| %>
+  <%= form.text_field :content, required: true %>
+  <%= form.submit t('views.shared.comment.new') %>
+<% end %>
