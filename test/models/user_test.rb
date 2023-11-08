@@ -3,8 +3,6 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  include Devise::Test::IntegrationHelpers
-
   setup do
     @user = FactoryBot.create(:user, name: nil)
   end

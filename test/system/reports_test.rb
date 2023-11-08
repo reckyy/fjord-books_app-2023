@@ -3,8 +3,6 @@
 require 'application_system_test_case'
 
 class ReportsTest < ApplicationSystemTestCase
-  include Devise::Test::IntegrationHelpers
-
   setup do
     @report = FactoryBot.create(:report)
     @user = @report.user
