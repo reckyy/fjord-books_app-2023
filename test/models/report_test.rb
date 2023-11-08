@@ -18,6 +18,6 @@ class ReportTest < ActiveSupport::TestCase
   end
 
   test 'Dateクラスに変換できているか' do
-    assert_equal @report.created_on, Time.zone.now.to_date 
+    assert_equal @report.created_on, Time.zone.now.to_date
   end
 end
