@@ -24,15 +24,20 @@ class ReportsTest < ApplicationSystemTestCase
     fill_in 'report[content]', with: 'テスト内容'
     click_on '登録する'
     assert_text '日報が作成されました。'
+    assert_text 'テストタイトル'
+    assert_text 'テスト内容'
   end
 
   test 'ログイン後、編集' do
     login(@user)
     visit report_url(@report)
     click_on 'この日報を編集'
-    fill_in 'report[content]', with: '変更したよ'
+    fill_in 'report[title]', with: 'タイトルを変更'
+    fill_in 'report[content]', with: '内容も変更したよ'
     click_on '更新する'
     assert_text '日報が更新されました。'
+    assert_text 'タイトルを変更'
+    assert_text '内容も変更したよ'
   end
 
   test 'ログイン後、日報削除' do
@@ -40,5 +45,6 @@ class ReportsTest < ApplicationSystemTestCase
     visit report_url(@report)
     click_on 'この日報を削除'
     assert_text '日報が削除されました。'
+    assert reports_path, page.current_path
   end
 end
