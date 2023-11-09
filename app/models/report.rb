@@ -21,9 +21,9 @@ class Report < ApplicationRecord
 
   REPORT_URL = %r{http://localhost:3000/reports/(\d+)}
 
-  def save_with_mentions(report_id)
+  def save_with_mentions
     Report.transaction do
-      (save && save_mentions(report_id)) || raise(ActiveRecord::Rollback)
+      (save && save_mentions(id)) || raise(ActiveRecord::Rollback)
     end
   end
 
