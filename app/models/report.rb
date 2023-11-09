@@ -18,4 +18,16 @@ class Report < ApplicationRecord
   def created_on
     created_at.to_date
   end
+
+  REPORT_URL = %r{http://localhost:3000/reports/(\d+)}
+
+  def save_mentions(report_id)
+    report_mentions.destroy_all
+    mentioned_ids = content.to_s.scan(REPORT_URL).flatten.uniq
+    return true if mentioned_ids.empty?
+
+    mentioned_ids.each do |id|
+      ReportMention.create(report_id:, mentioned_report_id: id)
+    end
+  end
 end
