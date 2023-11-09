@@ -21,6 +21,18 @@ class Report < ApplicationRecord
 
   REPORT_URL = %r{http://localhost:3000/reports/(\d+)}
 
+  def save_with_mentions(report_id)
+    Report.transaction do
+      (save && save_mentions(report_id)) || raise(ActiveRecord::Rollback)
+    end
+  end
+
+  def update_with_mentions(report_params, report_id)
+    Report.transaction do
+      (update(report_params) && save_mentions(report_id)) || raise(ActiveRecord::Rollback)
+    end
+  end
+
   def save_mentions(report_id)
     report_mentions.destroy_all
     mentioned_ids = content.to_s.scan(REPORT_URL).flatten.uniq
