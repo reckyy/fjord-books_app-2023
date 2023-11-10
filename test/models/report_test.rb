@@ -17,7 +17,8 @@ class ReportTest < ActiveSupport::TestCase
     assert_not @report.editable?(@user)
   end
 
-  test 'Dateクラスに変換できているか' do
-    assert_equal @report.created_on, Time.zone.now.to_date
+  test 'created_onメソッドが正常か' do
+    @report.created_at = Time.zone.local(1998, 4, 19, 12, 45)
+    assert_equal @report.created_on, Date.new(1998, 4, 19)
   end
 end
