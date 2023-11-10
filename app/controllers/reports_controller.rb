@@ -29,7 +29,9 @@ class ReportsController < ApplicationController
   end
 
   def update
-    if @report.update_with_mentions(report_params, @report.id)
+    @report.assign_attributes(report_params)
+
+    if @report.save_with_mentions
       redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human)
     else
       render :edit, status: :unprocessable_entity

@@ -23,13 +23,10 @@ class Report < ApplicationRecord
 
   def save_with_mentions
     Report.transaction do
-      (save && save_mentions(id)) || raise(ActiveRecord::Rollback)
-    end
-  end
-
-  def update_with_mentions(report_params, report_id)
-    Report.transaction do
-      (update(report_params) && save_mentions(report_id)) || raise(ActiveRecord::Rollback)
+      succeeded = save
+      succeeded = save_mentions(id) if succeeded
+      raise ActiveRecord::Rollback unless succeeded
+      true
     end
   end
 
