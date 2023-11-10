@@ -26,6 +26,7 @@ class Report < ApplicationRecord
       succeeded = save
       succeeded = save_mentions(id) if succeeded
       raise ActiveRecord::Rollback unless succeeded
+
       true
     end
   end
