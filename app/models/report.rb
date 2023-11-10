@@ -41,5 +41,6 @@ class Report < ApplicationRecord
     mentioned_ids.each do |id|
       ReportMention.create(report_id:, mentioned_report_id: id)
     end
+    true
   end
 end
