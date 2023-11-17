@@ -36,6 +36,6 @@ class Report < ApplicationRecord
     mentioned_ids = content.to_s.scan(REPORT_URL).flatten.uniq
     return true if mentioned_ids.empty?
 
-    mentioned_ids.all?{ |id| ReportMention.create(report_id:, mentioned_report_id: id) }
+    mentioned_ids.all? { |id| ReportMention.create(report_id:, mentioned_report_id: id) }
   end
 end
