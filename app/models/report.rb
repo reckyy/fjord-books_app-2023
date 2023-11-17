@@ -32,14 +32,10 @@ class Report < ApplicationRecord
   end
 
   def save_mentions(report_id)
-    succeeded = true
     report_mentioner.destroy_all
     mentioned_ids = content.to_s.scan(REPORT_URL).flatten.uniq
-    return succeeded if mentioned_ids.empty?
+    return true if mentioned_ids.empty?
 
-    mentioned_ids.each do |id|
-      succeeded = false unless ReportMention.create(report_id:, mentioned_report_id: id)
-    end
-    succeeded
+    mentioned_ids.all?{ |id| ReportMention.create(report_id:, mentioned_report_id: id) }
   end
 end
