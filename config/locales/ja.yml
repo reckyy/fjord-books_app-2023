@@ -202,6 +202,12 @@ ja:
       previous: '‹ 前'
       next: '次 ›'
       truncate: '…'
+    reports:
+      mention:
+        to_mention: 言及先
+        from_mention: 言及元
+        no_mentioning: 言及している日報はありません。
+        no_mentioned: 言及されている日報はありません。
   controllers:
     common:
       notice_create: "%{name}が作成されました。"
